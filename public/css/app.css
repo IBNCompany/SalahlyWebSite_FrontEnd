@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+* {
+  font-family: "Cairo", sans-serif;
+}
+
+/* Custom CSS Variables */
+:root {
+  /* Seeker Theme (Blue) */
+  --seeker-50: #eff6ff;
+  --seeker-100: #dbeafe;
+  --seeker-200: #bfdbfe;
+  --seeker-300: #93c5fd;
+  --seeker-400: #60a5fa;
+  --seeker-500: #3b82f6;
+  --seeker-600: #2563eb;
+  --seeker-700: #1d4ed8;
+  --seeker-800: #1e40af;
+  --seeker-900: #1e3a8a;
+
+  /* Provider Theme (Green) */
+  --provider-50: #f0fdf4;
+  --provider-100: #dcfce7;
+  --provider-200: #bbf7d0;
+  --provider-300: #86efac;
+  --provider-400: #4ade80;
+  --provider-500: #22c55e;
+  --provider-600: #16a34a;
+  --provider-700: #15803d;
+  --provider-800: #166534;
+  --provider-900: #14532d;
+
+  /* Neutral Colors */
+  --neutral-50: #f9fafb;
+  --neutral-100: #f3f4f6;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #6b7280;
+  --neutral-600: #4b5563;
+  --neutral-700: #374151;
+  --neutral-800: #1f2937;
+  --neutral-900: #111827;
+
+  /* Status Colors */
+  --success: var(--provider-500);
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: var(--seeker-500);
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] .sidebar {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .sidebar-collapsed {
+  transform: translateX(100%);
+}
+
+/* Custom Components */
+.btn-seeker {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+.btn-provider {
+  @apply bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+}
+
+.sidebar-link {
+  @apply flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors duration-200 rounded-lg mx-2;
+}
+
+.sidebar-link.active {
+  @apply bg-blue-50 text-blue-600 border-r-2 border-blue-600;
+}
+
+[dir="rtl"] .sidebar-link.active {
+  @apply border-r-0 border-l-2;
+}
+
+.form-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.table-header {
+  @apply px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50;
+}
+
+[dir="rtl"] .table-header {
+  @apply text-right;
+}
+
+.table-cell {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+}
+
+/* Animations */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.3s ease-out;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  [dir="rtl"] .sidebar {
+    transform: translateX(-100%);
+  }
+
+  [dir="rtl"] .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* Loading States */
+.loading {
+  @apply animate-pulse;
+}
+
+.skeleton {
+  @apply bg-gray-200 rounded;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
