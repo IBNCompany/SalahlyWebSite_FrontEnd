@@ -7,7 +7,7 @@
     <meta name="title" content="{{ $blog->meta_title ?? $blog->title }}">
     <meta name="description" content="{{ $blog->meta_description ?? Str::limit($blog->excerpt, 160) }}">
     <meta name="keywords" content="{{ $blog->meta_keywords ?? '' }}">
-    <meta name="author" content="Amr Achraf">
+    <meta name="author" content="IBN">
     <!-- Open Graph Tags -->
     <meta property="og:title" content="{{ $blog->meta_title ?? $blog->title }}">
     <meta property="og:description" content="{{ $blog->meta_description ?? Str::limit($blog->excerpt, 160) }}">
@@ -200,8 +200,8 @@
                 </p>
                 <p>
                     صُنع بواسطة
-                    <a href="https://wa.me/+201063153994" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">
-                        Amr Achraf
+                    <a href="https://www.facebook.com/IBNAGANCY" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">
+                        IBN
                     </a>
                 </p>
             </div>

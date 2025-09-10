@@ -209,8 +209,8 @@
                 </p>
                 <p>
                     صُنع بواسطة
-                    <a href="https://wa.me/+201063153994" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">
-                        Amr Achraf
+                    <a href="https://www.facebook.com/IBNAGANCY" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">
+                        IBN
                     </a>
                 </p>
             </div>

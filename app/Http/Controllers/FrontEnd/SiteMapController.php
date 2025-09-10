@@ -9,14 +9,10 @@ use Illuminate\Http\Request;
 
 class SiteMapController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke(Request $request)
     {
         $urls = [];
 
-        // Static pages
         $staticPages = [
             route('home'),
             url('terms'),
@@ -36,7 +32,6 @@ class SiteMapController extends Controller
             ];
         }
 
-        // Blog Sections
         foreach (BlogSection::active()->get() as $section) {
             $urls[] = [
                 'loc' => route('sections.show', $section->slug),
@@ -46,7 +41,6 @@ class SiteMapController extends Controller
             ];
         }
 
-        // Blogs
         foreach (Blog::active()->get() as $blog) {
             $urls[] = [
                 'loc' => route('show_a_blog', $blog->slug),
@@ -56,7 +50,20 @@ class SiteMapController extends Controller
             ];
         }
 
-        return response()->view('sitemap', compact('urls'), 200)
-            ->header('Content-Type', 'application/xml');
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
+
+        foreach ($urls as $url) {
+            $xml .= "    <url>" . PHP_EOL;
+            $xml .= "        <loc>" . htmlspecialchars($url['loc']) . "</loc>" . PHP_EOL;
+            $xml .= "        <lastmod>" . $url['lastmod'] . "</lastmod>" . PHP_EOL;
+            $xml .= "        <changefreq>" . $url['changefreq'] . "</changefreq>" . PHP_EOL;
+            $xml .= "        <priority>" . $url['priority'] . "</priority>" . PHP_EOL;
+            $xml .= "    </url>" . PHP_EOL;
+        }
+
+        $xml .= '</urlset>';
+
+        return response($xml, 200)->header('Content-Type', 'application/xml');
     }
 }
