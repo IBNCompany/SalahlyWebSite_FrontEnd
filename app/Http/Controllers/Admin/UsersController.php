@@ -122,13 +122,17 @@ class UsersController extends Controller
 
         $data['is_super_admin'] = $request->has('is_super_admin') ? 1 : 0;
 
+        if (is_null($data['password'])) {
+            unset($data['password']);
+        }
+
         $user->update($data);
 
         return redirect()
             ->route('admin.users.index')
             ->with('success', 'تم تعديل المستخدم بنجاح');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
